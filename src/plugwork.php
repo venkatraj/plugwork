@@ -15,5 +15,8 @@
  *
  * Copyright 2022
  * */
+namespace Venkatraj\Plugwork;
+
+require('vendor/autoload.php');
 
 defined( 'ABSPATH' ) || exit;

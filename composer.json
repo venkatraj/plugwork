@@ -1,0 +1,21 @@
+{
+    "name": "venkatraj/plugwork",
+    "description": "A WP plugin framework",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Venkatraj\\Plugwork\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Venkatraj\\Plugwork\\Testing\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Venkat Raj N"
+        }
+    ],
+    "require": {}
+}

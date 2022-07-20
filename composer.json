@@ -4,7 +4,7 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "Venkatraj\\Plugwork\\": ["src/", "src/includes/", "tests/"]
+            "Venkatraj\\Plugwork\\": ["src/", "src/includes/", "tests/", "tests/includes"]
         }
     },
     "authors": [

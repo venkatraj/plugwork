@@ -6,6 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="false" packagePrefix="Venkatraj\Plugwork\" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" packagePrefix="Venkatraj\Plugwork\" />
       <sourceFolder url="file://$MODULE_DIR$/src/includes" isTestSource="false" packagePrefix="Venkatraj\Plugwork\" />
+      <sourceFolder url="file://$MODULE_DIR$/tests/includes" isTestSource="false" packagePrefix="Venkatraj\Plugwork\" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/comparator" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/diff" />

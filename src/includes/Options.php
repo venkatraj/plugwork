@@ -50,13 +50,24 @@ class Options {
 
 	}
 
-	public function getAll()
+	public function getAll(): array
 	{
+		if (is_multisite()) {
+			$options = get_site_option($this->prefix, array());
+		} else {
+			$options = get_option($this->prefix, array());
+		}
 
+		return wp_parse_args($options, $this->getDefaults());
 	}
 
 	public function reset()
 	{
 
+	}
+
+	private function getDefaults(): array
+	{
+		return $this->defaults;
 	}
 }

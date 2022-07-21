@@ -60,9 +60,14 @@ class Options {
 		}
 	}
 
-	public function delete()
+	/**
+	 * @param string $optionName Option name.
+	 * @param string $section Section name where option belongs to
+	 */
+	public function delete(string $optionName, string $section = 'settings'): void
 	{
-
+		$options = $this->getAll();
+		unset($options[$section][$optionName]);
 	}
 
 	public function getAll(): array

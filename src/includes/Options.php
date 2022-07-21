@@ -40,9 +40,24 @@ class Options {
 
 	}
 
-	public function update($option_key, $option_value, $section='settings')
+	/**
+	 * @param string $optionName Option name.
+	 * @param mixed  $optionValue  Option value.
+	 * @param string $section Section name where option belongs to
+	 *
+	 * @return bool
+	 */
+	public function update(string $optionName, mixed $optionValue, string $section = 'settings'): bool
 	{
-//		update_option($option_key, $option_value);
+		$options = $this->getAll();
+
+		$options[$section][$optionName] = $optionValue;
+
+		if (is_multisite()) {
+			return update_site_option($this->prefix, $options);
+		} else {
+			return update_option($this->prefix, $options);
+		}
 	}
 
 	public function delete()

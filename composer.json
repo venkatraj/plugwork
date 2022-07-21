@@ -4,7 +4,12 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "Venkatraj\\Plugwork\\": ["src/", "src/includes/", "tests/", "tests/includes"]
+            "Plugwork\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
         }
     },
     "authors": [
@@ -12,6 +17,9 @@
             "name": "Venkat Raj N"
         }
     ],
+    "config": {
+        "optimize-autoloader": true
+    },
     "require-dev": {
         "phpunit/phpunit": "^9.5"
     }

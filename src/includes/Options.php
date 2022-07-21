@@ -35,9 +35,16 @@ class Options {
 		return $options[$section][$optionName] ?? $defaultValue;
 	}
 
-	public function add()
+	public function add(string $optionName, mixed $optionValue, string $section = 'settings'): bool
 	{
+		$options = $this->getAll();
+		$options[$section][$optionName] = $optionValue;
 
+		if (is_multisite()) {
+			return add_site_option($this->prefix, $options);
+		} else {
+			return add_option($this->prefix, $options);
+		}
 	}
 
 	/**

@@ -1,10 +1,23 @@
 <?php
 
-namespace Plugwork;
+namespace Plugwork\includes;
 
 defined( 'ABSPATH' ) || exit;
 
 class Options {
+
+	private string $prefix;
+
+	private array $defaults;
+
+	/**
+	 * @param string $prefix
+	 * @param array $defaults
+	 */
+	public function __construct(string $prefix, array $defaults = [])	{
+		$this->prefix = $prefix;
+		$this->defaults = $defaults;
+	}
 
 	public function get($key, $section = 'settings'): mixed
 	{

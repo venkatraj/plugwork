@@ -1,10 +1,10 @@
 <?php
 declare(strict_types = 1);
 
-namespace Tests;
+namespace Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use Plugwork\Options;
+use Plugwork\includes\Options;
 
 
 class OptionsTest extends TestCase {

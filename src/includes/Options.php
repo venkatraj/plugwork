@@ -81,9 +81,16 @@ class Options {
 		return wp_parse_args($options, $this->getDefaults());
 	}
 
-	public function reset()
+	/**
+	 * @return bool
+	 */
+	public function reset(): bool
 	{
-
+		if (is_multisite()) {
+			return delete_site_option($this->prefix);
+		} else {
+			return delete_option($this->prefix);
+		}
 	}
 
 	private function getDefaults(): array

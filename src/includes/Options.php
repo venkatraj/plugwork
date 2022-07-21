@@ -4,15 +4,17 @@ namespace Plugwork;
 
 defined( 'ABSPATH' ) || exit;
 
-class Options {
+final class Options {
 
 	private string $prefix;
 
 	private array $defaults;
 
 	/**
-	 * @param string $prefix
-	 * @param array $defaults
+	 * Constructor
+	 *
+	 * @param string $prefix  Name of the options collection
+	 * @param array $defaults Default options
 	 */
 	public function __construct(string $prefix, array $defaults = [])	{
 		$this->prefix = $prefix;
@@ -21,13 +23,16 @@ class Options {
 
 
 	/**
-	 * @param string $optionName Option name.
-	 * @param bool $defaultValue
+	 * Retrieve value for given option name
+	 *
+	 * @param string $optionName Option name to retrieve.
+	 * @param bool $defaultValue Default value to return, if option name is not found.
 	 * @param string $section Section name the option belongs to
 	 *
 	 * @return mixed
 	 */
-	public function get(string $optionName, bool $defaultValue = false, string $section = 'settings'): mixed {
+	public function get(string $optionName, bool $defaultValue = false, string $section = 'settings'): mixed
+	{
 		$options = $this->getAll();
 
 		if (empty( $optionName) || empty( $section )) return $defaultValue;
@@ -35,6 +40,15 @@ class Options {
 		return $options[$section][$optionName] ?? $defaultValue;
 	}
 
+	/**
+	 * Add an option name and value to collection
+	 *
+	 * @param string $optionName Option name.
+	 * @param mixed $optionValue Option value.
+	 * @param string $section Section name the option belongs to
+	 *
+	 * @return bool
+	 */
 	public function add(string $optionName, mixed $optionValue, string $section = 'settings'): bool
 	{
 		$options = $this->getAll();
@@ -48,6 +62,8 @@ class Options {
 	}
 
 	/**
+	 * Update an option
+	 *
 	 * @param string $optionName Option name.
 	 * @param mixed  $optionValue  Option value.
 	 * @param string $section Section name where option belongs to
@@ -68,6 +84,8 @@ class Options {
 	}
 
 	/**
+	 * Delete given option name from the collection.
+	 *
 	 * @param string $optionName Option name.
 	 * @param string $section Section name where option belongs to
 	 */
@@ -77,6 +95,11 @@ class Options {
 		unset($options[$section][$optionName]);
 	}
 
+	/**
+	 * Retrieve options collection.
+	 *
+	 * @return array
+	 */
 	public function getAll(): array
 	{
 		if (is_multisite()) {
@@ -89,6 +112,8 @@ class Options {
 	}
 
 	/**
+	 * Delete option collection from options table.
+	 *
 	 * @return bool
 	 */
 	public function reset(): bool
@@ -100,6 +125,11 @@ class Options {
 		}
 	}
 
+	/**
+	 * Get default values for options collection.
+	 *
+	 * @return array
+	 */
 	private function getDefaults(): array
 	{
 		return $this->defaults;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Plugwork\includes;
+namespace Plugwork;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -19,9 +19,20 @@ class Options {
 		$this->defaults = $defaults;
 	}
 
-	public function get($key, $section = 'settings'): mixed
-	{
-		return true;
+
+	/**
+	 * @param string $optionName Option name.
+	 * @param bool $defaultValue
+	 * @param string $section Section name the option belongs to
+	 *
+	 * @return mixed
+	 */
+	public function get(string $optionName, bool $defaultValue = false, string $section = 'settings'): mixed {
+		$options = $this->getAll();
+
+		if (empty( $optionName) || empty( $section )) return $defaultValue;
+
+		return $options[$section][$optionName] ?? $defaultValue;
 	}
 
 	public function add()
